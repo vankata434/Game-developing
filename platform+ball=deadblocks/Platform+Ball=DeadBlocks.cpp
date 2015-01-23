@@ -76,14 +76,22 @@ void Update()
 	// Loop trough all blocks
 	for (randomAccess_iterator block = blocks.begin(); block != blocks.end(); ++block)
 	{
-		int currX = ball.Coordinates.X, currY = ball.Coordinates.Y;
+		int currX = block._Ptr->Coordinates.X, currY = block._Ptr->Coordinates.Y;
 		// Remove any block that is hit by the ball
-		// blocks.pop_back();
-		// blocks.at(block);
-
-		//		blocks.push_back(GameObject(i, j, BlockSymbol));
-
 		// Implement unit collision
+		//if (ballSpeedX == 1)
+		/*for (int i = 1; i <= 3; i++) tuk trqbwa da se proverqva kogato
+		skorostta e >1 dali na nqkoi ot trite reda "po patq" na top4eto ima neucelen blok
+
+		*/{
+			if (ball.Coordinates.Y - 1 == currY && ball.Coordinates.X == currX)// && currY >= 0) //bez poslednoto uslovie bugva
+			{
+				blocks.erase(block);
+				cout << '\a';
+				ballSpeed = -ballSpeed;
+				break;
+			}
+		}
 
 	}
 }
@@ -108,6 +116,9 @@ void Draw()
 
 int main()
 {
+	//golemina na ekrana
+	system("MODE 71,30");//ne pipai 6iro4inata na ekrana, ako e po-tesen se poqvqva byg
+
 	consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
 
 	srand(time(NULL));
