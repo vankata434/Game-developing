@@ -1,4 +1,0 @@
-s 60
-adgdsg 42
-asd 33
-d 13
